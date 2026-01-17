@@ -1,0 +1,5 @@
+Flask>=2.2
+Flask-SQLAlchemy
+Flask-Cors
+gunicorn
+psycopg2-binary # optional if you later use Postgres

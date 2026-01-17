@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin - Registrants</title>
+  <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Registrants</h1>
+    <div id="list">Loading…</div>
+  </div>
+
+<script src="/static/js/env.js"></script>
+<script>
+(async function(){
+  const el = document.getElementById('list');
+  try{
+    const res = await fetch((window.API_BASE||'') + '/api/registrants');
+    if(!res.ok) throw new Error(await res.text());
+    const data = await res.json();
+    if(data.length === 0) { el.innerHTML = '<p>No registrants yet.</p>'; return; }
+    const table = document.createElement('table');
+    table.style.width = '100%';
+    table.style.borderCollapse = 'collapse';
+    table.innerHTML = '<thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Comment</th></tr></thead>';
+    const body = document.createElement('tbody');
+    data.forEach(u => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${u.id}</td><td>${u.username}</td><td>${u.email}</td><td>${u.comment||''}</td>`;
+      body.appendChild(tr);
+    });
+    table.appendChild(body);
+    el.innerHTML = '';
+    el.appendChild(table);
+  }catch(err){
+    el.textContent = 'Error fetching registrants: ' + err.message;
+  }
+})();
+</script>
+</body>
+</html>

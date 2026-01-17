@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Sign in</h1>
+    <p class="lead">Sign in with your username and password.</p>
+
+    <form action="{{ url_for('login') }}" method="POST" class="auth-form">
+        <label for="identifier">Username Or Email</label>
+        <input type="text" id="identifier" name="identifier" placeholder="your username or email" required>
+
+        <label for="password">Password</label>
+        <div class="password-field">
+            <input type="password" id="password" name="password" placeholder="Your password" required>
+            <button type="button" class="toggle-pass" aria-label="Toggle password visibility">Show</button>
+        </div>
+
+        <div class="form-row">
+            <label class="remember"><input type="checkbox" name="remember"> Remember me</label>
+            <a class="forgot" href="#">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign in</button>
+    </form>
+
+    
+</div>
+
+<script>
+// Password visibility toggle
+document.querySelectorAll('.toggle-pass').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const input = this.previousElementSibling;
+        if (input.type === 'password') { input.type = 'text'; this.textContent = 'Hide'; }
+        else { input.type = 'password'; this.textContent = 'Show'; }
+    });
+});
+</script>
+{% endblock %}

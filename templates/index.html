@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <header class="hero-header">
+        <h1>Welcome To My first FullStack Registration Page Project </h1>
+        <p class="lead">By registering below, you can explore the full journey and the key lessons I learned throughout the project.</p>
+        <div class="cta">
+            <a href="{{ url_for('register') }}" class="btn btn-primary" role="button">Register</a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline" role="button">Login</a>
+        </div>
+    </header>
+
+    <section class="features" aria-label="Features"> 
+        <div class="feature">
+            <div class="icon" aria-hidden="true"> <a href="https://www.linkedin.com/in/salimsirajofficial/" target="_blank">
+  <i class="fab fa-linkedin"></i>
+</a></div>
+            <h3> FOLLOW ME ON LINKDIN  </h3> 
+            <p>Verified and concise posts tailored for busy professionals.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon" aria-hidden="true"> <a href="https://t.me/salimsirajofficial" target="_blank">
+  <i class="fab fa-telegram"></i>
+</a> </div> 
+            <h3>JOIN MY TELEGRAM CHANNEL</h3>
+            <p>Get important announcements and weekly summaries.</p>
+        </div>
+
+        <div class="feature">
+            <div class="icon" aria-hidden="true"><a href="https://www.instagram.com/salimsirajofficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+                                             <i class="fab fa-instagram"></i></a>
+    </div>
+            <h3> FOLLOW ME ON INSTAGRAM </h3>
+            <p>Engage with like-minded members and share ideas.</p>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <small>  @salimsirajofficial  2026· <a href="#">Privacy</a> · <a href="#">Terms</a></small>
+    </footer>
+</div>
+{% endblock %}

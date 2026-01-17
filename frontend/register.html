@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Register</title>
+  <link rel="stylesheet" href="/static/css/form.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Create your account</h1>
+    <p class="lead">Join our channel to receive updates on Telegram. Your information will remain private.</p>
+
+    <form id="register-form" class="auth-form">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Choose a username" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+        <label for="password">Password</label>
+        <div class="password-field">
+            <input type="password" id="password" name="password" placeholder="Create a password" required>
+            <button type="button" class="toggle-pass" aria-label="Toggle password visibility">Show</button>
+        </div>
+
+        <label for="comment">Tell us (optional)</label>
+        <textarea id="comment" name="comment" rows="3" maxlength="300" placeholder="How did you find us?"></textarea>
+
+        <button type="submit" class="btn btn-primary">Create account</button>
+    </form>
+
+    <div class="auth-alt">
+        <p>Or sign in with</p>
+        <!-- Not using OAuth now; link removed -->
+        <a href="/login.html" class="btn btn-outline">Login</a>
+    </div>
+
+    <div id="form-msg" style="margin-top:16px"></div>
+  </div>
+
+<script src="/static/js/env.js"></script>
+<script>
+// Configure your backend base URL here or replace at deploy time.
+// Example: const API_BASE = 'https://your-backend.example.com';
+const API_BASE = window.API_BASE || '';
+
+// Password visibility toggle
+document.querySelectorAll('.toggle-pass').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const input = this.previousElementSibling;
+        if (input.type === 'password') { input.type = 'text'; this.textContent = 'Hide'; }
+        else { input.type = 'password'; this.textContent = 'Show'; }
+    });
+});
+
+// Submit form via fetch to the backend API
+const form = document.getElementById('register-form');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+        username: form.username.value.trim(),
+        email: form.email.value.trim(),
+        password: form.password.value,
+        comment: form.comment.value.trim()
+    };
+
+    const msg = document.getElementById('form-msg');
+    msg.textContent = 'Submitting...';
+
+    try {
+        const res = await fetch(API_BASE + '/api/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (res.ok) {
+            msg.textContent = 'Success! ' + (json.message || 'Account created.');
+            form.reset();
+            window.location.href = '/dashboard.html';
+        } else {
+            msg.textContent = 'Error: ' + (json.error || JSON.stringify(json));
+        }
+    } catch (err) {
+        msg.textContent = 'Network error: ' + err.message;
+    }
+});
+</script>
+</body>
+</html>

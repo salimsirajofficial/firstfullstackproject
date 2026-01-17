@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %} 
+    <body>
+
+    <main class="container">
+        <header class="site-header">
+            <div class="brand">
+        
+                <div class="logo-fallback">HS</div>
+                <div class="brand-text">
+                    <h1>Salim Siraj  — CS50 Journey</h1>
+                    <p class="tagline">Learning to build thoughtful web apps</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="{{ url_for('index') }}" class="active">Home</a>
+                <a href="{{ url_for('register') }}">Register</a>
+                <a href="{{ url_for('dashboard') }}">Members</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Welcome to My CS50 Journey</h2>
+                <p class="intro">CS50 helped me understand how computers think and how real software is built. This site is my hands-on playground — built with Flask, templates, and a little curiosity.</p>
+                <div class="hero-cta">
+                    <a href="#members" class="btn ghost">See members</a>
+                </div>
+            </div>
+            <div class="hero-graphics" aria-hidden="true">
+                <div class="card-spark card-spark-1"></div>
+                <div class="card-spark card-spark-2"></div>
+            </div>
+        </section>
+
+        <section class="grid features">
+            <div class="card">
+                <h3>📘 My CS50 Journey</h3>
+                <ul>
+                    <li>Learned how algorithms solve problems</li>
+                    <li>Understood how web apps work (client & server)</li>
+                    <li>Learned Flask routing and templates</li>
+                    <li>Learned how databases store real user data</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🛠 What I Learned</h3>
+                <ul>
+                    <li>HTML forms and POST requests</li>
+                    <li>Connecting Flask to a database</li>
+                    <li>Saving users and registration time</li>
+                    <li>Displaying dynamic data on a page</li>
+                </ul>
+            </div>
+        </section>
+
+        {% if new_user %}
+        <div class="alert-toast" role="status" aria-live="polite">
+            🎉 You're in — welcome, {{ new_user }}!
+            <button class="alert-close" aria-label="Dismiss">×</button>
+        </div>
+        {% endif %}
+
+        <section id="members" class="members-section">
+            <div class="members-header">
+                <h2>👥 Registered Members</h2>
+                <p class="muted">Recent members appear first.</p>
+            </div>
+
+            <div class="members-list">
+                {% if users %}
+                <table class="members-table" aria-describedby="members-desc">
+                    <caption id="members-desc" class="sr-only">List of registered members, newest first</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users|reverse %}
+                        <tr class="member-row {% if new_user and user.username==new_user %}new{% endif %}">
+                            <td class="username">{{ user.username }}</td>
+                            <td class="email">{{ user.email or '—' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <p class="muted">No members registered yet. Be the first!</p>
+                {% endif %}
+            </div>
+        </section>
+    </main>
+
+</body>
+{% endblock %}

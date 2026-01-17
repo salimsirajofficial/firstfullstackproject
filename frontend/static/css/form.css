@@ -1,0 +1,9 @@
+/* Simple form styles */
+*{box-sizing:border-box}
+.container { max-width: 640px; margin: 24px auto; padding: 24px; }
+.auth-form { display:flex; flex-direction:column; gap:12px; }
+.auth-form label { font-weight:600; text-align:left; }
+.auth-form input, .auth-form textarea { padding:10px; border-radius:8px; border:1px solid #e6e1d8 }
+.btn { padding: 10px 14px; border-radius:8px; }
+.password-field { display:flex; gap:8px; align-items:center }
+.toggle-pass { background:transparent; border:none; color:#23413c; cursor:pointer }

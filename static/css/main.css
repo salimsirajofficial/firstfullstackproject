@@ -110,6 +110,31 @@ body {
     margin-bottom: var(--space-2xl);
 }
 
+/* Profile Picture - Professional Headshot */
+.profile-picture-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-xl);
+}
+
+.profile-picture {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-floating);
+    border: 4px solid var(--bg-primary);
+    transition: all var(--transition-slow);
+    position: relative;
+}
+
+.profile-picture:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--shadow-xl), var(--glow-green-md);
+    border-color: var(--green-100);
+}
+
 .hero-badge {
     display: inline-flex;
     align-items: center;

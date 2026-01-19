@@ -813,6 +813,204 @@ body {
 }
 
 /* ============================================
+   PROJECT JOURNEY TIMELINE
+   ============================================ */
+.journey-section {
+    padding: var(--space-3xl) 0;
+    margin-bottom: var(--space-3xl);
+}
+
+.journey-timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Vertical connecting line */
+.journey-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 40px;
+    bottom: 40px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--green-500), var(--green-300));
+    border-radius: var(--radius-full);
+    opacity: 0.3;
+}
+
+.journey-step {
+    position: relative;
+    display: flex;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    opacity: 0;
+    animation: slideInStep 0.6s ease forwards;
+}
+
+.journey-step:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.journey-step:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.journey-step:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.journey-step:nth-child(4) {
+    animation-delay: 0.25s;
+}
+
+.journey-step:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+.journey-step:nth-child(6) {
+    animation-delay: 0.35s;
+}
+
+.journey-step:nth-child(7) {
+    animation-delay: 0.4s;
+}
+
+.journey-step:nth-child(8) {
+    animation-delay: 0.45s;
+}
+
+.journey-step:nth-child(9) {
+    animation-delay: 0.5s;
+}
+
+.journey-step:nth-child(10) {
+    animation-delay: 0.55s;
+}
+
+.journey-step:nth-child(11) {
+    animation-delay: 0.6s;
+}
+
+@keyframes slideInStep {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--green-500), var(--green-600));
+    color: white;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    box-shadow: var(--shadow-floating), var(--glow-green-md);
+    position: relative;
+    z-index: 1;
+    transition: all var(--transition-base);
+}
+
+.journey-step:hover .step-number {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: var(--shadow-xl), var(--glow-green-md);
+}
+
+.step-content {
+    flex: 1;
+    background: var(--bg-primary);
+    padding: var(--space-lg) var(--space-xl);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-floating);
+    border: 1px solid var(--gray-100);
+    transition: all var(--transition-slow);
+    position: relative;
+}
+
+.step-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--green-500), var(--green-600));
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+}
+
+.journey-step:hover .step-content::before {
+    opacity: 1;
+}
+
+.journey-step:hover .step-content {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--green-100);
+}
+
+.step-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.step-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin: 0;
+    padding: 0;
+}
+
+.step-list li {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    padding-left: var(--space-lg);
+    position: relative;
+    line-height: 1.6;
+}
+
+.step-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--green-600);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.step-list code {
+    background: var(--green-50);
+    color: var(--green-700);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+    border: 1px solid var(--green-100);
+    font-weight: 600;
+}
+
+/* ============================================
    EMPTY STATE
    ============================================ */
 .empty-state {
@@ -989,6 +1187,29 @@ body {
 
     .member-cell {
         margin-bottom: var(--space-sm);
+    }
+
+    /* Journey timeline mobile adjustments */
+    .journey-timeline::before {
+        left: 20px;
+    }
+
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.125rem;
+    }
+
+    .step-content {
+        padding: var(--space-md) var(--space-lg);
+    }
+
+    .step-title {
+        font-size: 1.125rem;
+    }
+
+    .step-list li {
+        font-size: 0.875rem;
     }
 }
 

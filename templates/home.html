@@ -29,7 +29,8 @@
                 </div>
                 <div class="nav-links">
                     <a href="{{ url_for('index') }}" class="nav-link active">Home</a>
-                    <a href="{{ url_for('dashboard') }}" class="nav-link">Members</a>
+                    <a href="#members" class="nav-link">Members</a>
+                    <a href="#journey" class="nav-link">Journey</a>
                     <a href="{{ url_for('login') }}" class="nav-link">Logout</a>
                 </div>
             </div>
@@ -138,6 +139,163 @@
                             <li>Displaying dynamic data on pages</li>
                         </ul>
                         <div class="card-tag">Practice</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Journey Section -->
+        <section id="journey" class="journey-section">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2 class="section-title">🚀 Steps I Used to Build This Project</h2>
+                    <p class="section-description">My full-stack development journey from idea to deployment</p>
+                </div>
+
+                <div class="journey-timeline">
+                    <!-- Step 1 -->
+                    <div class="journey-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3 class="step-title">💡 Idea & Goal</h3>
+                            <ul class="step-list">
+                                <li>Wanted to build a real full-stack project, not just frontend</li>
+                                <li>Purpose: show my learning journey and practice CS50 concepts</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="journey-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3 class="step-title">📦 Project Setup</h3>
+                            <ul class="step-list">
+                                <li>Created a project folder</li>
+                                <li>Set up a Python virtual environment</li>
+                                <li>Installed: Flask, Flask-SQLAlchemy, Gunicorn</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="journey-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3 class="step-title">📁 File Structure</h3>
+                            <ul class="step-list">
+                                <li><code>app.py</code> → main Flask application</li>
+                                <li><code>templates/</code> → HTML files (Jinja): layout.html, index.html,
+                                    register.html, login.html</li>
+                                <li><code>static/</code> → css/ & js/ folders</li>
+                                <li><code>registrations.db</code> → SQLite database</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="journey-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3 class="step-title">🎨 Frontend (HTML + CSS)</h3>
+                            <ul class="step-list">
+                                <li>Built pages using HTML & Jinja</li>
+                                <li>Used a base layout (layout.html)</li>
+                                <li>Styled pages with CSS</li>
+                                <li>Centered forms and made UI simple & clean</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="journey-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3 class="step-title">⚙️ Backend with Flask</h3>
+                            <ul class="step-list">
+                                <li>Created routes: <code>/</code> → home, <code>/register</code> → registration (GET &
+                                    POST), <code>/login</code> → login</li>
+                                <li>Handled form data using <code>request.form</code></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="journey-step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h3 class="step-title">🗄️ Database Design</h3>
+                            <ul class="step-list">
+                                <li>Used SQLite with SQLAlchemy</li>
+                                <li>Created a User table with: id, username, email, password, comment</li>
+                                <li>Used <code>db.session.add()</code> and <code>db.session.commit()</code></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 7 -->
+                    <div class="journey-step">
+                        <div class="step-number">7</div>
+                        <div class="step-content">
+                            <h3 class="step-title">🔐 Authentication Logic</h3>
+                            <ul class="step-list">
+                                <li>Registration: Save user data to database</li>
+                                <li>Login: Check username & password, start a session</li>
+                                <li>Used sessions to remember logged-in users</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 8 -->
+                    <div class="journey-step">
+                        <div class="step-number">8</div>
+                        <div class="step-content">
+                            <h3 class="step-title">🛡️ Security Basics</h3>
+                            <ul class="step-list">
+                                <li>Validated inputs</li>
+                                <li>Learned why passwords must be hashed</li>
+                                <li>Understood why raw passwords are dangerous</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 9 -->
+                    <div class="journey-step">
+                        <div class="step-number">9</div>
+                        <div class="step-content">
+                            <h3 class="step-title">📚 Version Control (Git & GitHub)</h3>
+                            <ul class="step-list">
+                                <li>Initialized Git repository</li>
+                                <li>Pushed code to GitHub</li>
+                                <li>Learned: commits, branches, fixing deployment errors</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 10 -->
+                    <div class="journey-step">
+                        <div class="step-number">10</div>
+                        <div class="step-content">
+                            <h3 class="step-title">🚀 Deployment (Render)</h3>
+                            <ul class="step-list">
+                                <li>Connected GitHub repo to Render</li>
+                                <li>Added: <code>requirements.txt</code>, <code>gunicorn app:app</code></li>
+                                <li>Fixed real deployment bugs</li>
+                                <li>Successfully deployed the app 🎉</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Step 11 -->
+                    <div class="journey-step">
+                        <div class="step-number">11</div>
+                        <div class="step-content">
+                            <h3 class="step-title">🐛 Debugging & Learning</h3>
+                            <ul class="step-list">
+                                <li>Fixed: missing files, wrong filenames, database confusion</li>
+                                <li>Learned how production differs from local</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

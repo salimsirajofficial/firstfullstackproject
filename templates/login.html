@@ -7,39 +7,106 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Sign in</h1>
-    <p class="lead">Sign in with your username and password.</p>
 
-    <form action="{{ url_for('login') }}" method="POST" class="auth-form">
-        <label for="identifier">Username Or Email</label>
-        <input type="text" id="identifier" name="identifier" placeholder="your username or email" required>
+<body>
+    <!-- Subtle background -->
+    <div class="form-ambient"></div>
 
-        <label for="password">Password</label>
-        <div class="password-field">
-            <input type="password" id="password" name="password" placeholder="Your password" required>
-            <button type="button" class="toggle-pass" aria-label="Toggle password visibility">Show</button>
+    <div class="form-wrapper">
+        <!-- Floating Form Card -->
+        <div class="form-card">
+            <div class="form-header">
+                <div class="back-link">
+                    <a href="{{ url_for('index') }}">
+                        <svg viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Back
+                    </a>
+                </div>
+
+                <h1 class="form-title">Welcome Back</h1>
+                <p class="form-subtitle">Sign in to continue your journey</p>
+            </div>
+
+            <form action="{{ url_for('login') }}" method="POST" class="auth-form">
+                <div class="form-group">
+                    <label for="identifier">Username or Email</label>
+                    <input type="text" id="identifier" name="identifier" placeholder="Enter your username or email"
+                        required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required
+                            autocomplete="current-password">
+                        <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+                            <svg class="eye-icon show" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                <path fill-rule="evenodd"
+                                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <svg class="eye-icon hide" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"
+                                    clip-rule="evenodd" />
+                                <path
+                                    d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="remember">
+                        <span class="checkbox-custom"></span>
+                        <span class="checkbox-text">Remember me</span>
+                    </label>
+                    <a href="#" class="link-muted">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full">
+                    Sign In
+                    <svg class="btn-arrow" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </form>
+
+            <div class="form-footer">
+                <p>Don't have an account? <a href="{{ url_for('register') }}">Create one</a></p>
+            </div>
         </div>
+    </div>
 
-        <div class="form-row">
-            <label class="remember"><input type="checkbox" name="remember"> Remember me</label>
-            <a class="forgot" href="#">Forgot password?</a>
-        </div>
+    <script>
+        // Password visibility toggle
+        const toggleBtn = document.querySelector('.toggle-password');
+        const passwordInput = document.querySelector('#password');
 
-        <button type="submit" class="btn btn-primary">Sign in</button>
-    </form>
+        toggleBtn.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            toggleBtn.classList.toggle('active');
+        });
 
-    
-</div>
+        // Form animation on load
+        const formCard = document.querySelector('.form-card');
+        formCard.style.opacity = '0';
+        formCard.style.transform = 'translateY(20px)';
 
-<script>
-// Password visibility toggle
-document.querySelectorAll('.toggle-pass').forEach(btn => {
-    btn.addEventListener('click', function () {
-        const input = this.previousElementSibling;
-        if (input.type === 'password') { input.type = 'text'; this.textContent = 'Hide'; }
-        else { input.type = 'password'; this.textContent = 'Show'; }
-    });
-});
-</script>
+        setTimeout(() => {
+            formCard.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            formCard.style.opacity = '1';
+            formCard.style.transform = 'translateY(0)';
+        }, 100);
+    </script>
+</body>
 {% endblock %}

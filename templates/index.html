@@ -7,44 +7,120 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <header class="hero-header">
-        <h1>Welcome To My first FullStack Registration Page Project </h1>
-        <p class="lead">By registering below, you can explore the full journey and the key lessons I learned throughout the project.</p>
-        <div class="cta">
-            <a href="{{ url_for('register') }}" class="btn btn-primary" role="button">Register</a>
-            <a href="{{ url_for('login') }}" class="btn btn-outline" role="button">Login</a>
-        </div>
-    </header>
 
-    <section class="features" aria-label="Features"> 
-        <div class="feature">
-            <div class="icon" aria-hidden="true"> <a href="https://www.linkedin.com/in/salimsirajofficial/" target="_blank">
-  <i class="fab fa-linkedin"></i>
-</a></div>
-            <h3> FOLLOW ME ON LINKDIN  </h3> 
-            <p>Verified and concise posts tailored for busy professionals.</p>
-        </div>
+<body>
+    <!-- Subtle background -->
+    <div class="landing-ambient"></div>
 
-        <div class="feature">
-            <div class="icon" aria-hidden="true"> <a href="https://t.me/salimsirajofficial" target="_blank">
-  <i class="fab fa-telegram"></i>
-</a> </div> 
-            <h3>JOIN MY TELEGRAM CHANNEL</h3>
-            <p>Get important announcements and weekly summaries.</p>
-        </div>
+    <div class="landing-wrapper">
+        <!-- Hero Section -->
+        <section class="landing-hero">
+            <div class="hero-badge">CS50 Project</div>
 
-        <div class="feature">
-            <div class="icon" aria-hidden="true"><a href="https://www.instagram.com/salimsirajofficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
-                                             <i class="fab fa-instagram"></i></a>
+            <h1 class="hero-title">
+                Welcome to My First<br />
+                FullStack Project
+            </h1>
+
+            <p class="hero-description">
+                By registering below, you can explore the full journey and the key lessons
+                I learned throughout this project.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{{ url_for('register') }}" class="btn-primary">
+                    Get Started
+                    <svg class="btn-arrow" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="{{ url_for('login') }}" class="btn-secondary">Sign In</a>
+            </div>
+        </section>
+
+        <!-- Social Links -->
+        <section class="social-section">
+            <h2 class="social-title">Connect With Me</h2>
+
+            <div class="social-grid">
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/salimsirajofficial/" target="_blank" class="social-card linkedin">
+                    <div class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <div class="social-content">
+                        <h3>Follow on LinkedIn</h3>
+                        <p>Verified posts for busy professionals</p>
+                    </div>
+                    <svg class="social-arrow" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+
+                <!-- Telegram -->
+                <a href="https://t.me/salimsirajofficial" target="_blank" class="social-card telegram">
+                    <div class="social-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <div class="social-content">
+                        <h3>Join Telegram Channel</h3>
+                        <p>Get announcements and weekly summaries</p>
+                    </div>
+                    <svg class="social-arrow" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/salimsirajofficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank" class="social-card instagram">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="social-content">
+                        <h3>Follow on Instagram</h3>
+                        <p>Engage and share ideas with the community</p>
+                    </div>
+                    <svg class="social-arrow" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="landing-footer">
+            <p>
+                <a href="{{ url_for('index') }}">@salimsirajofficial</a> 2026
+                <span class="footer-divider">·</span>
+                <a href="#">Privacy</a>
+                <span class="footer-divider">·</span>
+                <a href="#">Terms</a>
+            </p>
+        </footer>
     </div>
-            <h3> FOLLOW ME ON INSTAGRAM </h3>
-            <p>Engage with like-minded members and share ideas.</p>
-        </div>
-    </section>
 
-    <footer class="site-footer">
-        <small>  @salimsirajofficial  2026· <a href="#">Privacy</a> · <a href="#">Terms</a></small>
-    </footer>
-</div>
+    <script>
+        // Fade in animation
+        const elements = document.querySelectorAll('.social-card');
+        elements.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 100 * (index + 1));
+        });
+    </script>
+</body>
 {% endblock %}
